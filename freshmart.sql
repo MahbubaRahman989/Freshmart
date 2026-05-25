@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2026 at 08:10 AM
+-- Generation Time: May 25, 2026 at 02:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `address`, `created_at`) VALUES
-(1, 'Admin', ' info@freshmart.com', 'freshmart123!', '123 Grocery Street, Uttara, Dhaka', '2025-12-04 13:20:40');
+(1, 'Admin', 'info@freshmart.com', 'freshmart123!', '123 Grocery Street, Uttara, Dhaka', '2025-12-04 13:20:40');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,10 @@ INSERT INTO `delivery_assignments` (`id`, `delivery_person_id`, `order_id`, `ass
 (32, 3, 128, '2026-01-14'),
 (33, 3, 131, '2026-01-15'),
 (34, 3, 141, '2026-01-15'),
-(35, 3, 141, '2026-01-16');
+(35, 3, 141, '2026-01-16'),
+(36, 2, 144, '2026-05-23'),
+(37, 2, 144, '2026-05-23'),
+(38, 2, 145, '2026-05-23');
 
 -- --------------------------------------------------------
 
@@ -236,7 +239,10 @@ INSERT INTO `delivery_tracking_history` (`id`, `order_id`, `delivery_person_id`,
 (40, 128, 3, 'assigned', 'Assigned to Emon Halder', '2026-01-14 10:30:11'),
 (41, 131, 3, 'assigned', 'Assigned to Emon Halder', '2026-01-16 03:17:25'),
 (42, 141, 3, 'assigned', 'Assigned to Emon Halder', '2026-01-16 03:22:17'),
-(43, 141, 3, 'out_for_delivery', 'Rider is on the way', '2026-01-16 15:29:59');
+(43, 141, 3, 'out_for_delivery', 'Rider is on the way', '2026-01-16 15:29:59'),
+(44, 144, 2, 'assigned', 'Assigned to Karim Rahman', '2026-05-23 17:18:25'),
+(45, 144, 2, 'assigned', 'Assigned to Karim Rahman', '2026-05-23 17:19:56'),
+(46, 145, 2, 'assigned', 'Assigned to Karim Rahman', '2026-05-23 17:29:35');
 
 -- --------------------------------------------------------
 
@@ -456,7 +462,24 @@ INSERT INTO `notifications` (`id`, `user_id`, `order_id`, `message`, `is_read`, 
 (210, 7, 131, 'Your order #131 delivery status updated: ASSIGNED', 0, '2026-01-16 03:17:25'),
 (211, 7, 141, 'Your order #141 delivery status updated: ASSIGNED', 0, '2026-01-16 03:22:17'),
 (212, 1, 141, 'Delivery person (Emon Halder) accepted delivery for Order #141.', 0, '2026-01-16 03:22:30'),
-(213, 7, 141, 'Your order #141 delivery status updated: OUT FOR DELIVERY', 0, '2026-01-16 15:29:59');
+(213, 7, 141, 'Your order #141 delivery status updated: OUT FOR DELIVERY', 0, '2026-01-16 15:29:59'),
+(214, 19, 144, 'Your order #144 delivery status updated: ASSIGNED', 1, '2026-05-23 17:18:25'),
+(215, 1, 144, 'Delivery person (Karim Rahman) accepted delivery for Order #144.', 0, '2026-05-23 17:19:13'),
+(216, 19, 144, 'Your order #144 delivery status updated: ASSIGNED', 1, '2026-05-23 17:19:56'),
+(217, 19, 144, 'Your order #144 is out for delivery.', 1, '2026-05-23 17:20:16'),
+(218, 1, 144, 'Delivery person (Karim Rahman) set Order #144 as OUT FOR DELIVERY.', 0, '2026-05-23 17:20:16'),
+(219, 1, 144, 'COD COLLECTED: Delivery person (Karim Rahman) collected Tk 2992.5 for Order #144. Please confirm payment & complete order.', 0, '2026-05-23 17:22:31'),
+(220, 19, 144, 'Your COD payment for order #144 has been received. Order delivered successfully.', 1, '2026-05-23 17:23:06'),
+(221, 2, 144, 'Admin confirmed COD payment for Order #144. Delivery completed.', 0, '2026-05-23 17:23:06'),
+(222, 1, 144, 'COD payment confirmed for Order #144. Order marked Delivered & Completed.', 0, '2026-05-23 17:23:06'),
+(223, 19, 145, 'Your order #145 delivery status updated: ASSIGNED', 0, '2026-05-23 17:29:35'),
+(224, 1, 145, 'Delivery person (Karim Rahman) accepted delivery for Order #145.', 0, '2026-05-23 17:30:05'),
+(225, 19, 145, 'Your order #145 is out for delivery.', 0, '2026-05-23 17:30:24'),
+(226, 1, 145, 'Delivery person (Karim Rahman) set Order #145 as OUT FOR DELIVERY.', 0, '2026-05-23 17:30:24'),
+(227, 1, 145, 'COD COLLECTED: Delivery person (Karim Rahman) collected Tk 1956.18 for Order #145. Please confirm payment & complete order.', 0, '2026-05-23 17:31:17'),
+(228, 19, 145, 'Your COD payment for order #145 has been received. Order delivered successfully.', 0, '2026-05-23 17:32:08'),
+(229, 2, 145, 'Admin confirmed COD payment for Order #145. Delivery completed.', 0, '2026-05-23 17:32:08'),
+(230, 1, 145, 'COD payment confirmed for Order #145. Order marked Delivered & Completed.', 0, '2026-05-23 17:32:08');
 
 -- --------------------------------------------------------
 
@@ -678,7 +701,9 @@ INSERT INTO `orders` (`id`, `user_id`, `customer_name`, `customer_phone`, `custo
 (140, 7, 'Maliha Akter', '01998733211', 'Badda,Dhaka', 'Dhaka', '1738', 800.00, 16.00, 60.00, 'dhaka', 876.00, 'Pending', '2026-01-14 20:10:29', 'not_assigned', NULL, NULL, NULL, '140', 'SSLCommerz', 'Success', NULL, 0, NULL),
 (141, 7, 'Maliha Akter Munni', '01998733344', 'Uttara,Dhaka', 'Dhaka', '1464', 3099.00, 61.98, 60.00, 'dhaka', 3220.98, 'Shipped', '2026-01-14 20:18:30', 'out_for_delivery', 3, 'Emon Halder', NULL, NULL, 'COD', 'Pending', NULL, 1, '2026-01-16 03:22:30'),
 (142, 7, 'Maliha Akter Munni', '01998733344', 'Uttara,Dhaka', 'Dhaka', '1464', 815.00, 16.30, 60.00, 'dhaka', 891.30, 'Pending', '2026-01-16 17:42:51', 'not_assigned', NULL, NULL, NULL, '142', 'SSLCommerz', 'Success', NULL, 0, NULL),
-(143, 12, 'Moon Akter', '01993433391', 'Rampura', 'Dhaka', '1840', 1790.00, 35.80, 60.00, 'dhaka', 1885.80, 'Pending', '2026-01-17 10:30:23', 'not_assigned', NULL, NULL, NULL, '143', 'SSLCommerz', 'Success', NULL, 0, NULL);
+(143, 12, 'Moon Akter', '01993433391', 'Rampura', 'Dhaka', '1840', 1790.00, 35.80, 60.00, 'dhaka', 1885.80, 'Pending', '2026-01-17 10:30:23', 'not_assigned', NULL, NULL, NULL, '143', 'SSLCommerz', 'Success', NULL, 0, NULL),
+(144, 19, 'Tanjim Hasan', '01664827000', 'Tongi', 'Dhaka', '1284', 2875.00, 57.50, 60.00, 'dhaka', 2992.50, 'Completed', '2026-05-23 16:51:45', 'delivered', 2, 'Karim Rahman', '2026-05-23', NULL, 'COD', 'Paid', NULL, 1, '2026-05-23 17:19:13'),
+(145, 19, 'Tanjim Hasan', '01664827000', 'Tongi', 'Dhaka', '1284', 1859.00, 37.18, 60.00, 'dhaka', 1956.18, 'Completed', '2026-05-23 17:26:47', 'delivered', 2, 'Karim Rahman', '2026-05-23', NULL, 'COD', 'Paid', NULL, 1, '2026-05-23 17:30:05');
 
 -- --------------------------------------------------------
 
@@ -772,7 +797,14 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `pric
 (68, 142, 32, 'Vim Dishwashing Bar', 15.00, 1, NULL, '2026-01-16 11:42:51'),
 (69, 142, 34, 'WHISKAS Adult Dry Cat Food with Chicken & Rabbit Flavours ', 800.00, 1, NULL, '2026-01-16 11:42:51'),
 (70, 143, 33, 'Smart Heart Kitten Cat Food 450gm', 340.00, 1, NULL, '2026-01-17 04:30:23'),
-(71, 143, 27, 'NIVEA Body Milk Intensive Moisture', 1450.00, 1, NULL, '2026-01-17 04:30:23');
+(71, 143, 27, 'NIVEA Body Milk Intensive Moisture', 1450.00, 1, NULL, '2026-01-17 04:30:23'),
+(72, 144, 33, 'Smart Heart Kitten Cat Food 450gm', 340.00, 2, NULL, '2026-05-23 10:51:45'),
+(73, 144, 27, 'NIVEA Body Milk Intensive Moisture', 1450.00, 1, NULL, '2026-05-23 10:51:45'),
+(74, 144, 22, 'The Belgain Heart Chocolate', 355.00, 2, NULL, '2026-05-23 10:51:45'),
+(75, 144, 12, 'Nic Nac', 35.00, 1, NULL, '2026-05-23 10:51:45'),
+(76, 145, 33, 'Smart Heart Kitten Cat Food 450gm', 340.00, 2, NULL, '2026-05-23 11:26:47'),
+(77, 145, 26, 'Kodomo Baby  Shampoo Original', 999.00, 1, NULL, '2026-05-23 11:26:47'),
+(78, 145, 15, 'Amul Dark Chocolate', 180.00, 1, NULL, '2026-05-23 11:26:47');
 
 -- --------------------------------------------------------
 
@@ -809,28 +841,28 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `subcateg
 (8, 'Green Olive', 'Fresh green olives', 175.00, '1764744538_olives.png', 'fruits', 'foods', 13, '2025-12-14 11:44:13', 175.00, 0),
 (10, 'Avocados', 'Fresh Avacado contain a wide range of nutrients. Health benefits of avocado consumption may include improving digestion, lowering the risk of depression, and preventing bone loss.', 1200.00, '1764744265_avacado.png', 'fruits', 'foods', 12, '2025-12-14 11:44:13', 1200.00, 0),
 (11, 'Pomegranet', 'Fresh  Pomegranet Pomegranate was used in traditional medicine to treat intestinal parasitic infections, diarrhea, sore throat, and other conditions. It has been used orally (by mouth), topically (applied to the skin), and as a gargle or mouthwash.\r\nPreparations from pomegranate are currently promoted for many conditions including high blood pressure, heart disease, and diabetes.', 560.00, '1764745550_pomegranete.png', 'fruits', 'foods', 5, '2025-12-14 11:44:13', 560.00, 0),
-(12, 'Nic Nac', 'There are many flavours of Nic Nac, including milk, white, and dark chocolate.', 35.00, '1765055603_nicnac.png', 'chocolate', 'foods', 1, '2025-12-14 11:44:13', 15.00, 0),
+(12, 'Nic Nac', 'There are many flavours of Nic Nac, including milk, white, and dark chocolate.', 35.00, '1765055603_nicnac.png', 'chocolate', 'foods', 0, '2025-12-14 11:44:13', 15.00, 0),
 (13, 'Cadbury Bournville Dark Chocolate Bar', 'A chocolate that allows you to relax, unwind and end your day on a sweet note with Rich cocoa', 550.00, '1765105089_cadburyB.png', 'chocolate', 'foods', 2, '2025-12-14 11:44:13', 550.00, 0),
 (14, 'Cadbury Dairy Milk Silk Chocolate Bar', 'Cadbury Dairy Milk Silk is all about regaling in the richness and creaminess of chocolate. Indulge in a rich, smooth, and creamy celebration.', 495.00, '1765103619_dairymilk.png', 'chocolate', 'foods', 24, '2025-12-14 11:44:13', 495.00, 0),
-(15, 'Amul Dark Chocolate', 'Amul Dark Chocolate is made with the finest ingredients and delicious cocoa.', 180.00, '1765105949_amul.png', 'chocolate', 'foods', 4, '2025-12-14 11:44:13', 180.00, 0),
+(15, 'Amul Dark Chocolate', 'Amul Dark Chocolate is made with the finest ingredients and delicious cocoa.', 180.00, '1765105949_amul.png', 'chocolate', 'foods', 3, '2025-12-14 11:44:13', 180.00, 0),
 (16, 'Cadbury 5 Star Chocolate', 'Indulgence, Guaranteed Satisfaction, Deliciously Smooth.', 60.00, '1765106409_5star.png', 'chocolate', 'foods', 30, '2025-12-14 11:44:13', 60.00, 0),
 (17, 'Munch chocolate', 'Perfect for sweet cravings anytime.', 90.00, '1765108167_munch.png', 'chocolate', 'foods', 5, '2025-12-14 11:44:13', 90.00, 0),
 (18, 'Ifad Eggy Stix Bar-B-Q Chips', 'Ifad Eggy Stix Bar-B-Q Chips 16 gm is a crispy, crunchy snack with a savory barbecue flavor. ', 10.00, '1765174119_stix.png', 'chips', 'foods', 15, '2025-12-14 11:44:13', 10.00, 0),
 (19, 'Lay\'s Thai Style Spicy Chicken Potato Chips', 'Lay\'s Thai Style Spicy Chicken Potato Chips 13g bring a burst of bold, spicy flavor with a savory chicken taste, inspired by Thai cuisine.', 25.00, '1765174425_laysC.jpg', 'chips', 'foods', 16, '2025-12-14 11:44:13', 25.00, 0),
 (20, 'Ifad Eggy Pillow Bar-B-Q Chips', 'Ifad Eggy Pillow Bar-B-Q Chips 16 gm is a flavorful snack featuring a unique pillow-shaped texture with a delicious barbecue flavor.', 10.00, '1765178800_pillow.png', 'chips', 'foods', 21, '2025-12-14 11:44:13', 10.00, 0),
 (21, 'cavendish and harvey candy', 'Cavendish & Harvey candy is a premium German confectionery brand famous for its hard fruit drops, often sold in elegant, resealable tins or jars, made with real fruit juice for intense, authentic fruit flavors like citrus, mixed fruit, and tropical blends, focusing on quality, tradition, and delightful, sophisticated indulgence for over 100 countries. ', 449.00, '1766728194_cavendish.png', 'candy', 'foods', 14, '2025-12-14 11:44:13', 2.00, 0),
-(22, 'The Belgain Heart Chocolate', 'Belgian Hearts Chocolate is crafted and shaped into a heart-shaped. With that, it is kept in mind that while you are having it you get lost and dissolved into the richness of the chocolate.', 355.00, '1766727926_balgainH.png', 'chocolate', 'foods', 14, '2025-12-14 11:44:13', 2.00, 0),
+(22, 'The Belgain Heart Chocolate', 'Belgian Hearts Chocolate is crafted and shaped into a heart-shaped. With that, it is kept in mind that while you are having it you get lost and dissolved into the richness of the chocolate.', 355.00, '1766727926_balgainH.png', 'chocolate', 'foods', 12, '2025-12-14 11:44:13', 2.00, 0),
 (23, 'Livon Hair Serum', 'Livon Product Benefits: Soft & Silky Hair, Boosts Shine, Anti Frizz Item', 280.00, '1765591503_livon.png', 'womens-care', 'personal-care', 19, '2025-12-14 11:44:13', 280.00, 0),
 (24, 'Parachute Coconut Oil', 'Parachute Coconut Oil is Made from the finest quality coconut to ensure the best Coconut Oil. It has 5 Stage Purification process to ensure pure coconut oil every time, Long lasting freshness, and Consistent composition and viscosity in every drop of oil.', 220.00, '1765591673_parachute.png', 'womens-care', 'personal-care', 5, '2025-12-14 11:44:13', 220.00, 0),
 (25, 'Parachute Just For Baby - Baby Oil', 'Parachute Just for Baby - Baby Oil Just for Baby Oil with goodness of Natural Olive & Almond oil gets easily absorbed in your baby’s skin and it is great for everyday massage.', 300.00, '1765691510_justforbabyOIL.png', 'baby-care', 'personal-care', 19, '2025-12-14 11:51:50', 300.00, 0),
-(26, 'Kodomo Baby  Shampoo Original', 'Kodomo Baby Shampoo Original (0+), 400 ml, is a mild and gentle shampoo specially designed for newborns and babies. Its tear-free formula ensures that it’s safe for your little one’s sensitive eyes, providing a soothing and comfortable bathing experience.', 999.00, '1765693517_kodombaby.png', 'baby-care', 'personal-care', 10, '2025-12-14 12:25:17', 999.00, 0),
-(27, 'NIVEA Body Milk Intensive Moisture', 'Deeply moisturized skin with the new NIVEA Intensive Lotion Body Milk with deep moisture serum. This rich and creamy formula with 2 times more almond oil deeply moisturizes and softens your dry skin', 1450.00, '1766180525_nevia.png', 'womens-care', 'personal-care', 17, '2025-12-20 03:27:06', 1450.00, 0),
+(26, 'Kodomo Baby  Shampoo Original', 'Kodomo Baby Shampoo Original (0+), 400 ml, is a mild and gentle shampoo specially designed for newborns and babies. Its tear-free formula ensures that it’s safe for your little one’s sensitive eyes, providing a soothing and comfortable bathing experience.', 999.00, '1765693517_kodombaby.png', 'baby-care', 'personal-care', 9, '2025-12-14 12:25:17', 999.00, 0),
+(27, 'NIVEA Body Milk Intensive Moisture', 'Deeply moisturized skin with the new NIVEA Intensive Lotion Body Milk with deep moisture serum. This rich and creamy formula with 2 times more almond oil deeply moisturizes and softens your dry skin', 1450.00, '1766180525_nevia.png', 'womens-care', 'personal-care', 16, '2025-12-20 03:27:06', 1450.00, 0),
 (28, 'Enchanteur Charming Perfumed Body Lotion ', 'The body lotion is formulated to provide deep hydration to your skin, helping to replenish moisture and keep it soft.', 1290.00, '1766181502_enchanter.png', 'womens-care', 'personal-care', 11, '2025-12-20 03:58:22', 1290.00, 0),
 (29, 'Enchanteur Romantic Deo spray', 'The signature Enchanteur Romantic fragrance, of roses, white jasmines, violets and vanilla, is infused in this Perfumed Deo Spray. Its special formula is gentle on the skin and offers lasting freshness.', 500.00, '1766184132_enchanterS.png', 'womens-care', 'personal-care', 16, '2025-12-20 04:42:12', 500.00, 0),
 (30, 'Trix Lemon Dish Washing Liquid 1Ltr.', 'Trix Dishwashing Liquid Lemon 1Ltr. Cut through dirt and grime with refreshing lemon scent.', 270.00, '1767426750_trix.png', 'kitchen', 'household', 16, '2026-01-03 13:52:30', NULL, 0),
 (31, 'Vim Dishwashing Liquid', 'Vim liquid, with the power of 100 lemons, gives you complete cleaning without leaving any residue, unlike Dishwash Bars. It is also great value for money with one spoon of Vim liquid being enough to clean a full sink of dirty utensils.', 130.00, '1767426889_vim.png', 'kitchen', 'household', 28, '2026-01-03 13:54:49', NULL, 0),
 (32, 'Vim Dishwashing Bar', 'With the power of 100 lemons, Vim Bar helps to clean tough grease the fastest. It gives you a pleasant cleaning experience with its refreshing lemon fragrance. It removes stains easily.', 15.00, '1767427035_vimB.png', 'kitchen', 'household', 13, '2026-01-03 13:57:15', NULL, 0),
-(33, 'Smart Heart Kitten Cat Food 450gm', 'Smart Heart kitten food is delicious and made from real meat and fish. It is specially formulated for kitten development with nutrients to provide enhanced brain function, support the nervous system and develop the kitten’s memory. Your beloved kitten will have proper muscle and body structure development, a shiny coat and a healthy life.', 340.00, '1767888699_kitten1.png', 'catcare', 'pet-care', 5, '2026-01-08 17:27:02', NULL, 0),
+(33, 'Smart Heart Kitten Cat Food 450gm', 'Smart Heart kitten food is delicious and made from real meat and fish. It is specially formulated for kitten development with nutrients to provide enhanced brain function, support the nervous system and develop the kitten’s memory. Your beloved kitten will have proper muscle and body structure development, a shiny coat and a healthy life.', 340.00, '1767888699_kitten1.png', 'catcare', 'pet-care', 1, '2026-01-08 17:27:02', NULL, 0),
 (34, 'WHISKAS Adult Dry Cat Food with Chicken & Rabbit Flavours ', 'WHISKAS® 1+ Years Dry Cat Food is 100% complete and balanced to provide daily nutrition for adult cats. Specially designed with all the vitamins and minerals needed for a healthy and happy life, helping to provide the best possible care for your cat.', 800.00, '1767871959_kitten2.png', 'catcare', 'pet-care', 0, '2026-01-08 17:32:39', NULL, 0),
 (35, 'Mop Cotton Refill (17\") China', 'Give your floors a new look & shine with this white cotton finish mop head! Made with high quality absorbent thin cotton. This mop head provides extra protection to your floors and makes the floor look neat and free of bacteria and dirt. Use it to soak up spills, or for everyday cleaning tasks. Large surface area increase absorption which makes the floors neat and clean with no watermarks.', 185.00, '1767889467_Mop.png', 'cleaning', 'household', 7, '2026-01-08 22:24:27', NULL, 0),
 (36, 'Rok Dishwashing Steel Scourer', 'Easy to remove dirt and food particles, Ideal for cleaning the kitchen, stainless steel crocarize, pans, grills, pots, and dishes with minimum effort.', 35.00, '1767889595_rok.png', 'cleaning', 'household', 4, '2026-01-08 22:26:35', NULL, 0),
@@ -1002,7 +1034,13 @@ INSERT INTO `staff_notifications` (`id`, `to_role`, `to_id`, `from_role`, `from_
 (111, 'delivery', 3, 'admin', 1, 141, 'assign', 'Order #141 updated: ASSIGNED. Please check your dashboard.', NULL, 0, '2026-01-16 03:22:17', NULL),
 (112, 'admin', 1, 'admin', 1, 141, 'info', 'Order #141 delivery set to: ASSIGNED', NULL, 0, '2026-01-16 03:22:17', NULL),
 (113, 'delivery', 3, 'admin', 1, 141, 'assign', 'Order #141 updated: OUT FOR DELIVERY. Please check your dashboard.', NULL, 0, '2026-01-16 15:29:59', NULL),
-(114, 'admin', 1, 'admin', 1, 141, 'info', 'Order #141 delivery set to: OUT FOR DELIVERY', NULL, 0, '2026-01-16 15:29:59', NULL);
+(114, 'admin', 1, 'admin', 1, 141, 'info', 'Order #141 delivery set to: OUT FOR DELIVERY', NULL, 0, '2026-01-16 15:29:59', NULL),
+(115, 'delivery', 2, 'admin', 1, 144, 'assign', 'Order #144 updated: ASSIGNED. Please check your dashboard.', NULL, 0, '2026-05-23 17:18:25', NULL),
+(116, 'admin', 1, 'admin', 1, 144, 'info', 'Order #144 delivery set to: ASSIGNED', NULL, 0, '2026-05-23 17:18:25', NULL),
+(117, 'delivery', 2, 'admin', 1, 144, 'assign', 'Order #144 updated: ASSIGNED. Please check your dashboard.', NULL, 0, '2026-05-23 17:19:56', NULL),
+(118, 'admin', 1, 'admin', 1, 144, 'info', 'Order #144 delivery set to: ASSIGNED', NULL, 0, '2026-05-23 17:19:56', NULL),
+(119, 'delivery', 2, 'admin', 1, 145, 'assign', 'Order #145 updated: ASSIGNED. Please check your dashboard.', NULL, 0, '2026-05-23 17:29:35', NULL),
+(120, 'admin', 1, 'admin', 1, 145, 'info', 'Order #145 delivery set to: ASSIGNED', NULL, 0, '2026-05-23 17:29:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -1586,7 +1624,19 @@ INSERT INTO `stock_logs` (`id`, `product_id`, `quantity_change`, `action_type`, 
 (559, 32, -1, 'cart_add', NULL, 'User added to cart: Vim Dishwashing Bar', '2026-01-16 11:42:35'),
 (560, 34, -1, 'cart_add', NULL, 'User added to cart: WHISKAS Adult Dry Cat Food with Chicken & Rabbit Flavours ', '2026-01-16 11:42:40'),
 (561, 33, -1, 'cart_add', NULL, 'User added to cart: Smart Heart Kitten Cat Food 450gm', '2026-01-17 04:29:24'),
-(562, 27, -1, 'cart_add', NULL, 'User added to cart: NIVEA Body Milk Intensive Moisture', '2026-01-17 04:29:31');
+(562, 27, -1, 'cart_add', NULL, 'User added to cart: NIVEA Body Milk Intensive Moisture', '2026-01-17 04:29:31'),
+(563, 33, -1, 'cart_add', NULL, 'User added to cart: Smart Heart Kitten Cat Food 450gm', '2026-05-23 10:50:02'),
+(564, 33, -1, 'cart_update', NULL, 'Increased quantity by 1: Smart Heart Kitten Cat Food 450gm', '2026-05-23 10:50:07'),
+(565, 27, -1, 'cart_add', NULL, 'User added to cart: NIVEA Body Milk Intensive Moisture', '2026-05-23 10:50:13'),
+(566, 22, -1, 'cart_add', NULL, 'User added to cart: The Belgain Heart Chocolate', '2026-05-23 10:50:17'),
+(567, 22, 1, 'cart_remove', NULL, 'Item removed from cart: The Belgain Heart Chocolate', '2026-05-23 10:50:47'),
+(568, 22, -1, 'cart_add', NULL, 'User added to cart: The Belgain Heart Chocolate', '2026-05-23 10:51:01'),
+(569, 12, -1, 'cart_add', NULL, 'User added to cart: Nic Nac', '2026-05-23 10:51:12'),
+(570, 22, -1, 'cart_update', NULL, 'Increased quantity by 1: The Belgain Heart Chocolate', '2026-05-23 10:51:19'),
+(571, 33, -1, 'cart_add', NULL, 'User added to cart: Smart Heart Kitten Cat Food 450gm', '2026-05-23 11:24:10'),
+(572, 33, -1, 'cart_update', NULL, 'Increased quantity by 1: Smart Heart Kitten Cat Food 450gm', '2026-05-23 11:24:12'),
+(573, 26, -1, 'cart_add', NULL, 'User added to cart: Kodomo Baby  Shampoo Original', '2026-05-23 11:24:16'),
+(574, 15, -1, 'cart_add', NULL, 'User added to cart: Amul Dark Chocolate', '2026-05-23 11:24:21');
 
 -- --------------------------------------------------------
 
@@ -1636,7 +1686,8 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `address`,
 (15, 'Piku Hoq', 'piku@gmail.com', '$2y$10$kVfpwIGZh0ntfXzTka.l3uUzRwc3aix/9XkYwqHUXoIGKlMGcfaqa', '01998434352', 'Station Road', 'Uttara', '1215', 'Dhaka', '2002-06-11', NULL, 'all', 0, '2025-12-30 19:53:05', 1, NULL, NULL),
 (16, 'Jishan Islam', 'jishan@gmail.com', '$2y$10$FmFcGcoE576gP.bKXF9f8OfBFx3e5K62JPIXr4dJr3MX2WNrb80lG', '0198374657', 'Rajendrapur', 'Dhaka', '1267', 'Dhaka', '2003-01-07', NULL, 'all', 0, '2026-01-07 20:04:05', 1, NULL, NULL),
 (17, 'Lima Akter', 'lima@gmail.com', '$2y$10$pArzg5DsRzmStYKU8p6ubugwI3cxVP9ExK4llzO6ZuiLIZzcQjb5W', '01928374710', 'Rajshahi Sadar', 'Rajshahi', '1234', 'Rajshahi', '2005-02-03', NULL, 'local', 0, '2026-01-14 13:32:02', 1, NULL, NULL),
-(18, 'Jannat Rahman', 'jannat@gmail.com', '$2y$10$NlgvTQ2xGE65.hUykHLopejwCdw6RDk38CmZdqXUNddRibRGykJQG', '01992737787', 'Malibug', 'Dhaka', '1215', 'Dhaka', '2009-03-05', NULL, 'all', 0, '2026-01-17 03:57:44', 1, NULL, NULL);
+(18, 'Jannat Rahman', 'jannat@gmail.com', '$2y$10$NlgvTQ2xGE65.hUykHLopejwCdw6RDk38CmZdqXUNddRibRGykJQG', '01992737787', 'Malibug', 'Dhaka', '1215', 'Dhaka', '2009-03-05', NULL, 'all', 0, '2026-01-17 03:57:44', 1, NULL, NULL),
+(19, 'Tanjim Hasan', 'tanjim@gmail.com', '$2y$10$rFyPU51ZK0yWWgXcAydu4OhpE2kJMV5wrdp8KLb98dbd.cLFY9HtG', '01664827000', 'Tongi', 'Dhaka', '1284', 'Dhaka', '1997-11-05', '1779533378_boy_1.jpg', 'organic', 1, '2026-05-23 10:49:00', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1756,7 +1807,7 @@ ALTER TABLE `contact_messages`
 -- AUTO_INCREMENT for table `delivery_assignments`
 --
 ALTER TABLE `delivery_assignments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `delivery_locations`
@@ -1774,13 +1825,13 @@ ALTER TABLE `delivery_persons`
 -- AUTO_INCREMENT for table `delivery_tracking_history`
 --
 ALTER TABLE `delivery_tracking_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `offers`
@@ -1798,13 +1849,13 @@ ALTER TABLE `offer_products`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1822,19 +1873,19 @@ ALTER TABLE `refunds`
 -- AUTO_INCREMENT for table `staff_notifications`
 --
 ALTER TABLE `staff_notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `stock_logs`
 --
 ALTER TABLE `stock_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=575;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
